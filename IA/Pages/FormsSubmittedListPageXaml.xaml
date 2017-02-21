@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="IA.FormsSubmittedListPageXaml"
+		Title="{Binding Title}"
+		IsBusy="{Binding IsBusy}">
+	<ContentPage.Content>
+		<StackLayout>
+				<StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+					<ActivityIndicator  HorizontalOptions="Center"
+									   IsRunning="{Binding IsBusy}"
+									   IsVisible="{Binding IsBusy}"/>
+				    <Label HorizontalOptions="Center"
+				    	 VerticalOptions="Center" 
+				    	 Text="Loading..."/>
+		   		</StackLayout>
+				<ListView 
+					x:Name="FormsSubmittedList"
+					ItemsSource="{Binding FormList}"
+	            	HasUnevenRows="True">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						 <TextCell Text="{Binding FullNameDisplay}" Detail="{Binding DetailDisplay}" >
+						 	<TextCell.ContextActions>
+				            	<MenuItem Clicked="OnMore" CommandParameter="{Binding .}" Text="More" />
+				            	<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+				        	</TextCell.ContextActions>
+        				</TextCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

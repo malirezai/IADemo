@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="IA.StaticFormPage"
+		xmlns:local="clr-namespace:IA;assembly=IA"
+		Title="Static">
+	<ScrollView>
+		<StackLayout Padding = "20">
+
+			<Label 
+				Text = "{Binding FormTitle}"
+				FontAttributes = "Bold"/>
+			<Label 
+				Text = "{Binding DateOfServiceLabel}"/>
+			 <DatePicker Date="{Binding DateOfService}">
+         		<DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+			</DatePicker>
+			<Label
+				Text = "{Binding TypeOfServiceLabel}"/>
+			<local:EditorGrows 
+				Text = "{Binding TypeOfService}"/>
+			<Label
+				Text = "{Binding NameLabel}"/>
+			<Entry 
+				Text = "{Binding Name}"/>
+			<Label
+				Text = "{Binding FeesSubmittedLabel}"/>
+			<Entry 
+				Text = "{Binding FeesSubmitted}"/>
+			<Button 
+				x:Name = "PhotoButton"
+				Text = "Take Photo"/>
+			<Image
+				x:Name = "imagePreview"/>
+
+			
+			<!--<Label
+				x:Name = "NameLabel"
+				Text = "Full Name"/>
+			<Entry 
+				x:Name = "NameEntry"
+				Text = "{Binding Name}"/>
+			<Label
+				x:Name = "TitleLabel"
+				Text = "Title Name"/>
+			<Entry 
+				x:Name = "TitleEntry"
+				Text = "{Binding FormTitle}"/>
+			<Label
+				x:Name = "ExpLabel"	
+				Text = "Years Of Experience"/>
+			<Entry 
+				x:Name = "ExpEntry"
+				Text = "{Binding YearsOfExperience}"/>
+			<Button 
+				x:Name = "PhotoButton"
+				Text = "Take Photo"/>		
+	-->
+		
+		</StackLayout>
+	</ScrollView>	
+</ContentPage>
