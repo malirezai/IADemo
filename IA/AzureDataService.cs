@@ -17,7 +17,6 @@ namespace IA
 	{
 		public MobileServiceClient MobileService { get; set; }
 		IMobileServiceSyncTable<FormItem> formTable;
-        
 
 		public async Task Initialize()
 		{
@@ -102,6 +101,14 @@ namespace IA
 				await SyncForm();
 				return form;
 			}
+			//catch (MobileServicePushFailedException ex)
+			//{
+			//	Debug.WriteLine($"*********{ex}*****");
+			//}
+			//catch (MobileServiceInvalidOperationException ex)
+			//{
+			//	Debug.WriteLine($"*********{ex}*****");
+			//}
 			catch (Exception ex)
 			{
 				Debug.WriteLine($"*********{ex}*****");
@@ -112,6 +119,7 @@ namespace IA
 
 		public async Task SyncForm()
 		{
+			//await formTable.PurgeAsync();
 			await formTable.PullAsync("allForms", formTable.CreateQuery().Where(c => c.UserID == Settings.Current.CurrentUser.userID));
 			await MobileService.SyncContext.PushAsync();
 		}

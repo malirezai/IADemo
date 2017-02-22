@@ -43,17 +43,33 @@ namespace IA
 				BorderWidth = 2,
 				BorderColor = Color.FromRgb(7, 62, 164),
 				WidthRequest = 140,
-				Margin = 50
+				Margin = 50,
+				AutomationId = "loginButton"
 
 			};
 
 			loginButton.Clicked += async (sender, e) =>
 			{
 
+				if (App.ON_TESTCLOUD)
+				{
+					Settings.Current.CurrentUser = new UserModel
+					{
+						firstName = "TEST",
+						lastName = "CLOUD",
+						AuthToken = "token",
+						authExpiry = DateTimeOffset.Now,
+						userID = "XTC123"
+					};
+					await Navigation.PopAsync();
+					return;
+				}
+
+
 				if (String.IsNullOrEmpty(Settings.Current.CurrentUser.AuthToken))
 				{
 
-					App.USING_AUTH = true;
+					App.ON_TESTCLOUD = false;
 					var auth = DependencyService.Get<IAuthenticator>();
 
 					// USING CLIENT SIDE AUTH FLOW THEN POSTING THE INFORMATION INTO AZURE 
@@ -81,7 +97,7 @@ namespace IA
 							};
 						}
 
-						if (App.USING_AUTH)
+						if (!App.ON_TESTCLOUD)
 						{
 							JObject payload = new JObject();
 							payload["access_token"] = Settings.Current.CurrentUser.AuthToken;

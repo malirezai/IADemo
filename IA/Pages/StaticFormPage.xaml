@@ -12,22 +12,22 @@
 				FontAttributes = "Bold"/>
 			<Label 
 				Text = "{Binding DateOfServiceLabel}"/>
-			 <DatePicker Date="{Binding DateOfService}">
+			 <DatePicker Date="{Binding DateOfService}" AutomationId="datePicker">
          		<DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
 			</DatePicker>
 			<Label
 				Text = "{Binding TypeOfServiceLabel}"/>
-			<local:EditorGrows 
+			<local:EditorGrows AutomationId = "typeOfServiceField"
 				Text = "{Binding TypeOfService}"/>
 			<Label
 				Text = "{Binding NameLabel}"/>
-			<Entry 
+			<Entry AutomationId = "nameField"
 				Text = "{Binding Name}"/>
 			<Label
 				Text = "{Binding FeesSubmittedLabel}"/>
-			<Entry 
+			<Entry AutomationId = "feesSubmittedField"
 				Text = "{Binding FeesSubmitted}"/>
-			<Button 
+			<Button AutomationId = "takePhotoButton"
 				x:Name = "PhotoButton"
 				Text = "Take Photo"/>
 			<Image

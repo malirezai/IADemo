@@ -31,12 +31,12 @@ namespace IA
 			
 			InitializeComponent();
 
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                Icon = "submitted.png";
-            }
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				Icon = "submitted.png";
+			}
 
-            BindingContext = viewModel = new FormsSubmittedViewModel(this);
+			BindingContext = viewModel = new FormsSubmittedViewModel(this);
 
 			FormsSubmittedList.IsPullToRefreshEnabled = true;
 

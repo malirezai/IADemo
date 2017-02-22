@@ -11,7 +11,7 @@ namespace IA
 		public static AzureDataService azureService;
 		public static List<FormItem> submittedForms;
 
-		public static bool USING_AUTH = true;
+		public static bool ON_TESTCLOUD = false;
 		public static bool DidSubmitNewForm = false;
 		public static MainTabPage mainTabPage  = new MainTabPage();
 

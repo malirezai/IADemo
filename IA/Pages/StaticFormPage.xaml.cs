@@ -19,12 +19,12 @@ namespace IA
 
 			InitializeComponent();
 
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                Icon = "form_icon.png";
-            }
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				Icon = "form_icon.png";
+			}
 
-            var submitButtonToolbar = new ToolbarItem
+			var submitButtonToolbar = new ToolbarItem
 			{
 				Text = "Submit"
 			};

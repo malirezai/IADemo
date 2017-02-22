@@ -20,14 +20,14 @@ namespace IA
 			App.mainTabPage.Title = "Dynamic";
 		}
 
-        public FormsPage()
-        {
-            Title = "Dynamic";
-            
-            if (Device.OS == TargetPlatform.iOS)
-            {	
-                Icon = "form_icon.png";
-            }
+		public FormsPage()
+		{
+			Title = "Dynamic";
+
+			if (Device.OS == TargetPlatform.iOS)
+			{   
+				Icon = "form_icon.png";
+			}
 
 			json = new JsonSerialize();
 			createForm("form1");

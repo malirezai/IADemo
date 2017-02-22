@@ -64,6 +64,8 @@
     <resources>
         <image name="hamburger.png" width="14" height="15"/>
         <image name="Logo_iA_Groupe.png" width="1310" height="857"/>
+        <image name="form_icon.png" width="30" height="30"/>
+        <image name="submitted.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>

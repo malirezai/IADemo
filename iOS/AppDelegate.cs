@@ -26,12 +26,25 @@ namespace IA.iOS
 
 			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White }, UIControlState.Normal);
 
-
+			// ONLY IF THIS BUILD IS A DEBUG BUILD DO WE ENABLE THE TEST CLOUD AGENT
+			#if ENABLE_TEST_CLOUD
+			Xamarin.Calabash.Start();
+			#endif
 
 
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
 		}
+
+		//BACKDOOR METHOD FOR SETTING THE USER ID TO TEST CLOUD
+		[Export("enableTestCloudUser:")] // notice the colon at the end of the method name
+		public NSString EnableTestCloudBackdoor(NSString value)
+		{
+			App.ON_TESTCLOUD = true;
+			return new NSString("ON TEST CLOUD");
+		}
+
+
 	}
 }

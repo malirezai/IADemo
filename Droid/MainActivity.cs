@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Java.Interop;
 
 namespace IA.Droid
 {
@@ -34,6 +35,14 @@ namespace IA.Droid
 			base.OnActivityResult(requestCode, resultCode, data);
 			AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
 
+		}
+
+
+		//BACKDOOR METHOD FOR SETTING THE USER ID TO TEST CLOUD
+		[Export("enableTestCloudUser")]
+		public void EnableTestCloudBackdoor()
+		{
+			App.ON_TESTCLOUD = true;
 		}
 	}
 }
