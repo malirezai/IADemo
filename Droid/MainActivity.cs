@@ -1,5 +1,6 @@
 ﻿using System;
-
+using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -10,6 +11,9 @@ using Android.OS;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Java.Interop;
 
+
+[assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "VALUE")]
+
 namespace IA.Droid
 {
 	[Activity(Label = "IA.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -17,6 +21,9 @@ namespace IA.Droid
 	{
 		protected override void OnCreate(Bundle bundle)
 		{
+
+			string HOCKEYAPP_ID = "VALUE";
+
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
 
@@ -25,6 +32,7 @@ namespace IA.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
+			InitializeHockeyApp(HOCKEYAPP_ID);
 
 			LoadApplication(new App());
 		}
@@ -44,5 +52,16 @@ namespace IA.Droid
 		{
 			App.ON_TESTCLOUD = true;
 		}
+
+
+		void InitializeHockeyApp(string hockeyAppID)
+		{
+			CrashManager.Register(this, hockeyAppID);
+			UpdateManager.Register(this, hockeyAppID, true);
+			FeedbackManager.Register(this, hockeyAppID, null);
+			MetricsManager.Register(Application);
+		}
+
+
 	}
 }
